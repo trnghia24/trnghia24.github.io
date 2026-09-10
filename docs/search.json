@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "I grew up in Vietnam. At the age of 18, I arrived in Canada to start my undegraduate journey as an international student. Six years passed by with a lot of homesick and lessons to grow up, I finally finished my undergraduate program and recently started a new journey called MDS."
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -14,11 +14,25 @@
     "text": "I am a UBC MDS student from Vietnam. Before joining the MDS program, I was also an undergraduate at UBC. Through the MDS program, I hope to develop the essential skills and knowledge to become a data scientist. Importantly, I am a big fan of Manchester United. GGMU."
   },
   {
-    "objectID": "about.html#w",
-    "href": "about.html#w",
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
+    "section": "",
+    "text": "My first week at UBC was both exciting and worrisome. After a great long summer break at home, I was back in Vancouver to start the MDS program. The first few days were tiring because I was hit by jetlag badly and had to get myself familiar with new things at the new program.\nThis program is fast-paced as they called it, and I had a chance to experience that in my first week. Every weekday is busy with two lectures in the morning and one lab session in the afternoon. At the weekend, we have to prepare to submit all assignments. Also, my daily commute time is quite long, which makes everything even worse.\nTiring, stressful,… are the words to describe my situation. However, I believe things would get better once I am used to it. Importantly, I am not alone in this journey. I have cohort peers that will help and share the road with me and teaching team that always listen and understand.\n\n\n\nBack to school… again!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
     "title": "About",
-    "section": "W",
-    "text": "W"
+    "section": "",
+    "text": "I grew up in Vietnam. At the age of 18, I arrived in Canada to start my undegraduate journey as an international student. Six years passed by with a lot of homesick and lessons to grow up, I finally finished my undergraduate program and recently started a new journey called MDS."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "I grew up in Vietnam. At the age of 18, I arrived in Canada to start my undegraduate journey as an international student. Six years passed by with a lot of homesick and lessons to grow up, I finally finished my undergraduate program and recently started a new journey called MDS."
   },
   {
     "objectID": "about.html#why-data-science",
@@ -33,12 +47,5 @@
     "title": "About",
     "section": "Outside of data science",
     "text": "Outside of data science\nOutside of Data Science, I am a big fan of soccer, specifically Man United. I’ve been watching the team since I was very little, supporting them through their peaks and troughs. My favorite player at the moment is Kobbie Mainoo who is deemed to be one of the brightest midfielders for the future."
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About",
-    "section": "",
-    "text": "I grew up in Vietnam. At the age of 18, I arrived in Canada to start my undegraduate journey as an international student. Six years passed by with a lot of homesick and lessons to grow up, I finally finished my undergraduate program and recently started a new journey called MDS."
   }
 ]
