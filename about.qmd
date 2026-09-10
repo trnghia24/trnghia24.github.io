@@ -2,4 +2,11 @@
 title: "About"
 ---
 
-About this site
+## Background
+I grew up in Vietnam. At the age of 18, I arrived in Canada to start my undegraduate journey as an international student. Six years passed by with a lot of homesick and lessons to grow up, I finally finished my undergraduate program and recently started a new journey called MDS.
+
+## Why Data Science
+During my upper years of undergrad, I had a chance to take a few courses related to Natural Language Processing and Computer Vision, during which I was shown how math and stats could be translated into the outstanding capabilities of computers. For this reason, I chose Data Science to continue exploring the field that once impressed me.
+
+## Outside of data science
+Outside of Data Science, I am a big fan of soccer, specifically Man United. I've been watching the team since I was very little, supporting them through their peaks and troughs. My favorite player at the moment is Kobbie Mainoo who is deemed to be one of the brightest midfielders for the future.

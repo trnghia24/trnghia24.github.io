@@ -2,6 +2,6 @@
 title: "Trung Nghia Vo"
 ---
 
-This is a Quarto website.
+![](images/manutd.png){width=250px}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a UBC MDS student from Vietnam. Before joining the MDS program, I was also an undergraduate at UBC. Through the MDS program, I hope to develop the essential skills and knowledge to become a data scientist. Importantly, I am a big fan of Manchester United. GGMU.
