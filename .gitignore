@@ -2,3 +2,9 @@
 **/*.quarto_ipynb
 .DS_Store
 _site/
+# Python-generated files
+__pycache__/
+*.py[oc]
+
+# Virtual environments
+.venv
