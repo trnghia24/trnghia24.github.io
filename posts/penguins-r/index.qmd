@@ -1,0 +1,139 @@
+---
+title: "Penguin Size and Flipper Length (R)"
+author: "Trung Nghia Vo"
+date: "2026-09-24"
+format:
+    html:
+        code-fold: false
+---
+
+## Dataset
+
+**Data source:** The data come from the [`palmerpenguins` dataset](https://allisonhorst.github.io/palmerpenguins/), originally collected by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research program.
+
+**License:** The data are available under the CC0 1.0 Universal license, in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data. The Python package used in this analysis is palmerpenguins. Its documentation also identifies the dataset as CC0.
+
+**Data source citation:** 
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.
+
+## Introduction
+
+The Palmer Penguins dataset contains measurements of Adelie, Chinstrap, and Gentoo penguins observed in the Palmer Archipelago of Antarctica. In this analysis, I investigate how penguin species differ in body mass and flipper length, and whether flipper length is related to body mass.
+
+## Loading the data
+
+I use the `palmerpenguins` package to access the dataset, `dplyr` for data manipulation, and `ggplot2` for visualization.
+
+```{r}
+#| message: false
+#| warning: false
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+penguins <- palmerpenguins::penguins
+
+head(penguins)
+```
+
+The dataset contains measurements including species, island, bill dimensions, flipper length, body mass, sex, and year. I first examine its dimensions and missing values.
+
+```{r}
+cat("Number of observations:", nrow(penguins), "\n")
+cat("Number of variables:", ncol(penguins), "\n")
+
+colSums(is.na(penguins))
+```
+
+There are 344 observations and 8 variables. Some variables contain missing values, so I will handle missing observations when performing calculations that require specific measurements.
+
+## Comparing penguin species
+
+I first calculate the number of observations and the average body mass and flipper length for each species.
+
+```{r}
+species_summary <- penguins |>
+  group_by(species) |>
+  summarise(
+    n = n(),
+    mean_body_mass_g = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper_length_mm = mean(flipper_length_mm, na.rm = TRUE)
+  )
+
+species_summary
+```
+
+The summary shows differences in body size among the three species. Gentoo penguins have the largest average body mass and longest average flippers, while Adelie penguins have the smallest averages for both measurements. Chinstrap penguins are between the other two species for these measurements.
+
+## Body mass by species
+
+To examine the distributions rather than only their averages, I create a boxplot of body mass by species.
+
+```{r}
+#| label: fig-penguin-mass
+#| fig-cap: "Body mass of penguins by species."
+
+ggplot(
+  penguins,
+  aes(x = species, y = body_mass_g)
+) +
+  geom_boxplot() +
+  labs(
+    title = "Body mass of penguins by species",
+    x = "Penguin species",
+    y = "Body mass (g)"
+  )
+```
+
+The figure shows that Gentoo penguins generally have higher body masses than Adelie and Chinstrap penguins. There is variation within each species, so comparing means alone does not capture the entire distribution.
+
+## Flipper length and body mass
+
+Next, I investigate whether penguins with longer flippers also tend to have greater body mass. I remove observations missing either measurement before calculating the correlation.
+
+```{r}
+complete_penguins <- penguins |>
+  filter(
+    !is.na(flipper_length_mm),
+    !is.na(body_mass_g)
+  )
+
+correlation <- cor(
+  complete_penguins$flipper_length_mm,
+  complete_penguins$body_mass_g
+)
+
+cat("Pearson correlation:", round(correlation, 3), "\n")
+```
+
+The Pearson correlation is strongly positive. This indicates that penguins with longer flippers generally tend to have greater body mass.
+
+I visualize this relationship and add a separate fitted regression line for each species.
+
+```{r}
+#| label: fig-flipper-mass
+#| fig-cap: "Relationship between flipper length and body mass, with separate regression lines by species."
+
+ggplot(
+  complete_penguins,
+  aes(
+    x = flipper_length_mm,
+    y = body_mass_g,
+    color = species
+  )
+) +
+  geom_point() +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  labs(
+    title = "Flipper length and body mass",
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species"
+  )
+```
+
+The scatterplot shows a strong positive relationship between flipper length and body mass. The three species also occupy different regions of the plot, indicating that species is associated with differences in overall body size.

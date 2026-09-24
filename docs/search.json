@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Penguin Size and Flipper Length (Python)\n\n\n\n\n\n\n\n\nSep 24, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\nNo matching items"
+    "text": "Penguin Size and Flipper Length (R)\n\n\n\n\n\n\n\n\nSep 24, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\n\n\n\n\n\n\n\nPenguin Size and Flipper Length (Python)\n\n\n\n\n\n\n\n\nSep 24, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 10, 2026\n\n\nTrung Nghia Vo\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -12,6 +12,55 @@
     "title": "Trung Nghia Vo",
     "section": "",
     "text": "I am a UBC MDS student from Vietnam. Before joining the MDS program, I was also an undergraduate at UBC. Through the MDS program, I hope to develop the essential skills and knowledge to become a data scientist. Importantly, I am a big fan of Manchester United. GGMU."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html",
+    "href": "posts/penguins-r/index.html",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "",
+    "text": "Data source: The data come from the palmerpenguins dataset, originally collected by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research program.\nLicense: The data are available under the CC0 1.0 Universal license, in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data. The Python package used in this analysis is palmerpenguins. Its documentation also identifies the dataset as CC0.\nData source citation: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#dataset",
+    "href": "posts/penguins-r/index.html#dataset",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "",
+    "text": "Data source: The data come from the palmerpenguins dataset, originally collected by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research program.\nLicense: The data are available under the CC0 1.0 Universal license, in accordance with the Palmer Station LTER Data Policy and the LTER Data Access Policy for Type I data. The Python package used in this analysis is palmerpenguins. Its documentation also identifies the dataset as CC0.\nData source citation: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#introduction",
+    "href": "posts/penguins-r/index.html#introduction",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "Introduction",
+    "text": "Introduction\nThe Palmer Penguins dataset contains measurements of Adelie, Chinstrap, and Gentoo penguins observed in the Palmer Archipelago of Antarctica. In this analysis, I investigate how penguin species differ in body mass and flipper length, and whether flipper length is related to body mass."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#loading-the-data",
+    "href": "posts/penguins-r/index.html#loading-the-data",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "Loading the data",
+    "text": "Loading the data\nI use the palmerpenguins package to access the dataset, dplyr for data manipulation, and ggplot2 for visualization.\n\nlibrary(palmerpenguins)\nlibrary(dplyr)\nlibrary(ggplot2)\n\npenguins &lt;- palmerpenguins::penguins\n\nhead(penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nThe dataset contains measurements including species, island, bill dimensions, flipper length, body mass, sex, and year. I first examine its dimensions and missing values.\n\ncat(\"Number of observations:\", nrow(penguins), \"\\n\")\n\nNumber of observations: 344 \n\ncat(\"Number of variables:\", ncol(penguins), \"\\n\")\n\nNumber of variables: 8 \n\ncolSums(is.na(penguins))\n\n          species            island    bill_length_mm     bill_depth_mm \n                0                 0                 2                 2 \nflipper_length_mm       body_mass_g               sex              year \n                2                 2                11                 0 \n\n\nThere are 344 observations and 8 variables. Some variables contain missing values, so I will handle missing observations when performing calculations that require specific measurements."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#comparing-penguin-species",
+    "href": "posts/penguins-r/index.html#comparing-penguin-species",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "Comparing penguin species",
+    "text": "Comparing penguin species\nI first calculate the number of observations and the average body mass and flipper length for each species.\n\nspecies_summary &lt;- penguins |&gt;\n  group_by(species) |&gt;\n  summarise(\n    n = n(),\n    mean_body_mass_g = mean(body_mass_g, na.rm = TRUE),\n    mean_flipper_length_mm = mean(flipper_length_mm, na.rm = TRUE)\n  )\n\nspecies_summary\n\n# A tibble: 3 × 4\n  species       n mean_body_mass_g mean_flipper_length_mm\n  &lt;fct&gt;     &lt;int&gt;            &lt;dbl&gt;                  &lt;dbl&gt;\n1 Adelie      152            3701.                   190.\n2 Chinstrap    68            3733.                   196.\n3 Gentoo      124            5076.                   217.\n\n\nThe summary shows differences in body size among the three species. Gentoo penguins have the largest average body mass and longest average flippers, while Adelie penguins have the smallest averages for both measurements. Chinstrap penguins are between the other two species for these measurements."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#body-mass-by-species",
+    "href": "posts/penguins-r/index.html#body-mass-by-species",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "Body mass by species",
+    "text": "Body mass by species\nTo examine the distributions rather than only their averages, I create a boxplot of body mass by species.\n\nggplot(\n  penguins,\n  aes(x = species, y = body_mass_g)\n) +\n  geom_boxplot() +\n  labs(\n    title = \"Body mass of penguins by species\",\n    x = \"Penguin species\",\n    y = \"Body mass (g)\"\n  )\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\nFigure 1: Body mass of penguins by species.\n\n\n\n\n\nThe figure shows that Gentoo penguins generally have higher body masses than Adelie and Chinstrap penguins. There is variation within each species, so comparing means alone does not capture the entire distribution."
+  },
+  {
+    "objectID": "posts/penguins-r/index.html#flipper-length-and-body-mass",
+    "href": "posts/penguins-r/index.html#flipper-length-and-body-mass",
+    "title": "Penguin Size and Flipper Length (R)",
+    "section": "Flipper length and body mass",
+    "text": "Flipper length and body mass\nNext, I investigate whether penguins with longer flippers also tend to have greater body mass. I remove observations missing either measurement before calculating the correlation.\n\ncomplete_penguins &lt;- penguins |&gt;\n  filter(\n    !is.na(flipper_length_mm),\n    !is.na(body_mass_g)\n  )\n\ncorrelation &lt;- cor(\n  complete_penguins$flipper_length_mm,\n  complete_penguins$body_mass_g\n)\n\ncat(\"Pearson correlation:\", round(correlation, 3), \"\\n\")\n\nPearson correlation: 0.871 \n\n\nThe Pearson correlation is strongly positive. This indicates that penguins with longer flippers generally tend to have greater body mass.\nI visualize this relationship and add a separate fitted regression line for each species.\n\nggplot(\n  complete_penguins,\n  aes(\n    x = flipper_length_mm,\n    y = body_mass_g,\n    color = species\n  )\n) +\n  geom_point() +\n  geom_smooth(\n    method = \"lm\",\n    se = FALSE\n  ) +\n  labs(\n    title = \"Flipper length and body mass\",\n    x = \"Flipper length (mm)\",\n    y = \"Body mass (g)\",\n    color = \"Species\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\nFigure 2: Relationship between flipper length and body mass, with separate regression lines by species.\n\n\n\n\n\nThe scatterplot shows a strong positive relationship between flipper length and body mass. The three species also occupy different regions of the plot, indicating that species is associated with differences in overall body size."
   },
   {
     "objectID": "posts/first-weeks/index.html",
