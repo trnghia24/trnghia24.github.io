@@ -8,4 +8,5 @@ dependencies = [
     "matplotlib>=3.11.2",
     "palmerpenguins>=0.1.6",
     "pandas>=3.0.6",
+    "seaborn>=0.13.2",
 ]
