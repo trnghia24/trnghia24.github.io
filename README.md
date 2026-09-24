@@ -28,6 +28,7 @@ Run this in your **terminal**:
 
 ```bash
 git clone https://github.com/trnghia24/trnghia24.github.io.git
+cd trnghia24.github.io
 ```
 
 ### 2. Set up the Python environment
