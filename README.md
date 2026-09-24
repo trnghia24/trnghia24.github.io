@@ -55,14 +55,13 @@ renv::restore()
 `renv::restore()` installs the R packages recorded in `renv.lock`. The `renv` project environment is activated automatically when the project is opened.
 
 ### 4. Build the computational posts
-At the root directory of the repo, run: 
+Run the following command in a terminal from the repository root:
 
 ```bash
-uv run quarto render posts/penguins-py/index.qmd
-quarto render
+uv run quarto render
 ```
 
-The first command runs the Python Quarto post using the project's uv environment. The second command renders the R Quarto post using the active R/renv environment.
+This renders the entire Quarto project, including both the Python and R computational posts. The Python post is executed using the project's uv environment, while the R post uses the project's active renv environment.
 
 To preview the complete site locally:
 
