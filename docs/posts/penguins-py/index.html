@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="loading-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-the-data">Loading the data</h2>
 <p>I use the Python <code>palmerpenguins</code> package to load the dataset and pandas for data manipulation.</p>
-<div id="7eef9e0e" class="cell" data-message="false" data-execution_count="1">
+<div id="6dc9121c" class="cell" data-message="false" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The dataset contains measurements including species, island, bill dimensions, flipper length, body mass, sex, and year. I first examine its dimensions and missing values.</p>
-<div id="1038e54c" class="cell" data-execution_count="2">
+<div id="8cb5671b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of observations: </span><span class="sc">{</span>penguins<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of variables: </span><span class="sc">{</span>penguins<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -335,7 +335,7 @@ dtype: int64</code></pre>
 <section id="comparing-penguin-species" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-penguin-species">Comparing penguin species</h2>
 <p>I first calculate the number of observations and the average body mass and flipper length for each species.</p>
-<div id="c8ffbf22" class="cell" data-execution_count="3">
+<div id="4234c1dd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>species_summary <span class="op">=</span> (</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    penguins</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"species"</span>)</span>
@@ -426,7 +426,7 @@ Figure&nbsp;1: Body mass of penguins by species.
 <section id="flipper-length-and-body-mass" class="level2">
 <h2 class="anchored" data-anchor-id="flipper-length-and-body-mass">Flipper length and body mass</h2>
 <p>Next, I investigate whether penguins with longer flippers also tend to have greater body mass. I remove observations missing either measurement before calculating the correlation.</p>
-<div id="2b962da9" class="cell" data-execution_count="5">
+<div id="1d17a0cc" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>complete_penguins <span class="op">=</span> penguins.dropna(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    subset<span class="op">=</span>[<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>)</span>
