@@ -47,7 +47,7 @@ This creates or updates the project's virtual environment using the dependencies
 
 Open the project in **RStudio/Positron** and start an **R Console**.
 
-Run the following in the **R Console**:
+Run the following in the **R Console**, at the repo root:
 
 ```r
 renv::restore()
@@ -66,9 +66,11 @@ This renders the entire Quarto project, including both the Python and R computat
 
 To preview the complete site locally:
 
+```bash
 quarto preview
+```
 
-## Viewing the built site
+#### Viewing the built site
 
 The rendered HTML files are created in the `docs/` directory.
 
@@ -88,7 +90,7 @@ quarto preview
 
 Quarto will build the documents and open a local preview in your browser. The preview updates as the source files are changed.
 
-## Data
+### 5.Data
 
 Both computational posts use the **Palmer Penguins** dataset.
 
@@ -98,7 +100,7 @@ https://allisonhorst.github.io/palmerpenguins/
 
 The Palmer Penguins data are available under the **CC0 1.0 Universal** license.
 
-### Network requirements
+#### Network requirements
 
 The build does **not** require an internet connection to download the dataset each time the site is rendered. The Python post loads the dataset through the installed `palmerpenguins` package, while the R post uses the dataset provided by the installed `palmerpenguins` R package.
 
